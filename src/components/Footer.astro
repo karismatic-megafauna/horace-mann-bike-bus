@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE } from "../consts";
+import InstagramLink from "./InstagramLink.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-base-300 bg-base-100">
+  <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div class="text-sm text-secondary">
+      <p>© {year} {SITE_TITLE}.</p>
+      <p>Questions? DM us on Instagram.</p>
+    </div>
+    <InstagramLink variant="inline" />
+  </div>
+</footer>
