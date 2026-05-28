@@ -7,10 +7,14 @@
 
 A simple, image-forward blog for the Horace Mann Bike Bus. Each "post" is a record of a ride — primarily photos, with light context. The site doubles as an info hub so new families can find the route, meeting time, and how to get in touch.
 
+**Core message: joy.** The Horace Mann Bike Bus is about kids having fun on bikes — bubbles, going slow, staying safe — while learning how to ride confidently on real streets. Every page should reinforce that this is a joyful, safe, family thing. Not a hardcore cycling club. Not a commute hack. A weekly burst of delight that happens to teach a life skill.
+
 ## Goals & Non-Goals
 
 **Goals**
+- Communicate joy + safety as the core identity — every page should feel like fun-on-bikes, not a transportation initiative.
 - Show the most recent ride front-and-center on the home page.
+- Explain clearly what a bike bus is and why we do it (for first-time visitors).
 - Make it easy to browse past rides in chronological order.
 - Provide enough info (route, meeting time, contact) that a new family can show up next ride.
 - Easy to add a new ride: drop photos into a folder, write an MDX file, commit.
@@ -94,14 +98,17 @@ Photos live next to their post in `src/content/rides/images/<date>/`, so `astro:
 ## Pages
 
 ### `/` (`src/pages/index.astro`)
-1. **Hero — Latest Ride**
+1. **Joy banner** — short, bold tagline at the very top of the page:
+   > "Bubbles. Big smiles. Going slow. We ride together so our kids learn the road."
+   Reinforces the core message before anyone scrolls.
+2. **Hero — Latest Ride**
    - Large cover image (optimized via `<Image>`).
    - Ride title, formatted date, rider count if present, `notes` blurb.
    - 3–4 thumbnails from `gallery` as a preview.
    - "See full ride →" link to `/rides/[slug]`.
-2. **Route & Meeting card** — short text + embedded Google Map iframe.
-3. **Join us card** — Instagram CTA (`@horace_mann_bike_bus`) with icon.
-4. **Recent rides strip** — 3 most recent `RideCard`s under hero, with "All rides →" link.
+3. **Route & Meeting card** — short text + embedded Google Map iframe.
+4. **Join us card** — Instagram CTA (`@horace_mann_bike_bus`) with icon.
+5. **Recent rides strip** — 3 most recent `RideCard`s under hero, with "All rides →" link.
 
 If no rides exist yet, show a friendly "First ride coming soon" placeholder instead of the hero.
 
@@ -116,10 +123,40 @@ Grid of `RideCard`s, newest first. Each card: cover image, title, formatted date
 - "← Back to all rides" link.
 
 ### `/about` (`src/pages/about.astro`)
-- **The Route** — written description + embedded Google Map iframe (placeholder src, easy to swap).
-- **Meeting Time & Place** — day(s) of week, time, address (placeholder values for user to edit).
-- **Contact** — "DM us on Instagram [@horace_mann_bike_bus](https://instagram.com/horace_mann_bike_bus)". No email.
-- **Safety / FAQ** — placeholder section the user can fill in or delete.
+A longer page, structured for someone discovering the bike bus for the first time. Sections in order:
+
+1. **What is a bike bus?**
+   A 2–3 paragraph plain-language explainer:
+   - It's a group of kids and parents biking together to school on a set route at a set time.
+   - Anyone along the route can join — we pick up riders at intersections like a bus.
+   - We go slow, we stay in a group, we follow traffic rules, and we make it fun.
+   - Bubbles, music, helmets, high-vis. The whole point is joy + safety, together.
+
+2. **Why we do it**
+   The intention behind the bus:
+   - To give kids a confident, repeated experience of riding on real streets with adults who know how to do it safely.
+   - To turn school drop-off into something kids look forward to instead of something they're driven through.
+   - To show that streets can belong to families, not just cars.
+   - To build a small piece of community — neighbors who know each other by name.
+
+3. **How we keep it safe**
+   - Adult ride leader at the front, sweep at the back.
+   - We ride single file or two-by-two depending on the street.
+   - Helmets required for kids, encouraged for adults.
+   - We stop together, we wait together, we cross together.
+   - Younger kids ride next to a parent or in a cargo bike.
+
+4. **The Route** — written description + embedded Google Map iframe (placeholder src, easy to swap).
+5. **Meeting Time & Place** — day(s) of week, time, address (placeholder values for user to edit).
+6. **FAQ** — at least the following questions, each with a short, parent-friendly answer:
+   - *What if my kid can't ride very well yet?* — That's exactly who this is for. Come ride with us. We go slow. Parents ride alongside their kids. Cargo bikes and trail-a-bikes welcome.
+   - *What if it rains?* — We post on Instagram the morning of if we're cancelling.
+   - *Do we need to RSVP?* — No. Just show up at any point on the route.
+   - *What kind of bike does my kid need?* — Anything that rolls and has working brakes. Scooters welcome too.
+   - *Is there a cost?* — No. It's free. It's neighbors.
+   - *Can I join if my kid doesn't go to Horace Mann?* — Yes.
+   - *How can I help?* — DM us on Instagram. We always need more adult ride marshals.
+7. **Contact** — "DM us on Instagram [@horace_mann_bike_bus](https://instagram.com/horace_mann_bike_bus)". No email.
 
 ## Components
 
@@ -145,11 +182,17 @@ Grid of `RideCard`s, newest first. Each card: cover image, title, formatted date
 
 ## Visual Design
 
-- **Personality:** friendly, community-school, daylight-cheerful — not corporate, not edgy.
-- **Palette:** white background, deep navy text, accent yellow (`#facc15`-ish) for buttons/links and safety-orange for hover. daisyUI custom theme.
-- **Type:** system sans for body; one display sans (e.g. via Google Fonts: `Fraunces` or `Outfit`) for headers. Decide during impl.
+- **Personality:** joyful, school-community, daylight-cheerful, a little playful — not corporate, not edgy, not sporty/aggressive.
+- **Palette — Horace Mann colors:**
+  - Primary: **purple** (Horace Mann purple — use a rich school purple around `#5b2d8c` / `#6b21a8` family; tune in impl)
+  - Neutral: **grey** (medium body text and dividers, e.g. slate-600 family)
+  - Background: **white** (clean, lots of whitespace; photos do the visual work)
+  - Accent: a lighter purple tint for hovers/highlights
+  - Used sparingly to avoid feeling heavy — purple for headers, buttons, links, IG icon; grey for secondary text; white everywhere else.
+- **Type:** system sans for body; one display sans (e.g. via Google Fonts: `Fraunces`, `Outfit`, or `Nunito`) for headers — pick something friendly/rounded that matches the joy tone. Decide during impl.
+- **Photography over decoration:** ride photos are the visual hero of every page. Avoid heavy patterns, gradients, or decorative SVGs that compete with photos.
 - **Mobile-first:** parents will check on phones. Hero image scales full-width; nav collapses to a small menu on narrow screens.
-- **Accessibility:** semantic landmarks, alt text required on cover/gallery images (enforced by schema later if needed), color-contrast AA.
+- **Accessibility:** semantic landmarks, alt text required on cover/gallery images (enforced by schema later if needed), color-contrast AA — check purple-on-white meets AA for body text; darken if needed.
 
 ## Seed Content
 
