@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  ride: CollectionEntry<"rides">;
+};
+
+const { ride } = Astro.props;
+const { data, id } = ride;
+const slug = id.replace(/\.mdx?$/, "");
+const previewGallery = data.gallery.slice(0, 4);
+---
+
+<section class="bg-base-100">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <p class="text-sm uppercase tracking-wide text-secondary font-medium">Latest ride</p>
+    <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-primary">{data.title}</h2>
+    <p class="mt-2 text-secondary">
+      <FormattedDate date={data.date} />
+      {data.riders !== undefined && (
+        <span> · {data.riders} {data.riders === 1 ? "rider" : "riders"}</span>
+      )}
+    </p>
+
+    <a href={`/rides/${slug}`} class="mt-6 block rounded-box overflow-hidden bg-base-200">
+      <Image
+        src={data.coverImage}
+        alt={`Cover photo from ${data.title}`}
+        widths={[600, 1000, 1600]}
+        sizes="(min-width: 1024px) 960px, 100vw"
+        class="w-full max-h-[520px] object-cover"
+      />
+    </a>
+
+    {data.notes && (
+      <p class="mt-4 text-lg text-base-content">{data.notes}</p>
+    )}
+
+    {previewGallery.length > 0 && (
+      <div class="mt-6 grid grid-cols-4 gap-2 sm:gap-3">
+        {previewGallery.map((img, i) => (
+          <a
+            href={`/rides/${slug}`}
+            class="block aspect-square overflow-hidden rounded-md bg-base-200"
+          >
+            <Image
+              src={img}
+              alt={`${data.title} preview ${i + 1}`}
+              widths={[200, 400]}
+              sizes="25vw"
+              class="w-full h-full object-cover"
+            />
+          </a>
+        ))}
+      </div>
+    )}
+
+    <div class="mt-6">
+      <a href={`/rides/${slug}`} class="btn btn-primary">See full ride →</a>
+    </div>
+  </div>
+</section>
