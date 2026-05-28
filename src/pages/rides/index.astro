@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import RideCard from "../../components/RideCard.astro";
+import { SITE_TITLE } from "../../consts";
+
+const allRides = (await getCollection("rides")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Layout
+  title={`All rides — ${SITE_TITLE}`}
+  description="Every ride of the Horace Mann Bike Bus, newest first."
+>
+  <section class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl sm:text-4xl font-semibold text-primary">All rides</h1>
+    <p class="mt-2 text-secondary">Every ride, newest first.</p>
+
+    {allRides.length === 0 ? (
+      <p class="mt-10 text-secondary">No rides posted yet. Check back soon.</p>
+    ) : (
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {allRides.map((r) => <RideCard ride={r} />)}
+      </div>
+    )}
+  </section>
+</Layout>
