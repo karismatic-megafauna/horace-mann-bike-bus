@@ -1,13 +1,13 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
-import icon from 'astro-icon';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import icon from "astro-icon";
 
 export default defineConfig({
   // TODO: replace with the real domain before deploying — sitemap uses this.
-  site: 'https://horacemannbikebus.example',
+  site: "https://horacemannbikebus.com/",
   integrations: [mdx(), sitemap(), icon()],
   vite: {
     plugins: [tailwindcss()],
