@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import RidePost from "../../layouts/RidePost.astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const rides = await getCollection("rides");
+  return rides.map((ride) => ({
+    params: { slug: ride.id.replace(/\.mdx?$/, "") },
+    props: { ride },
+  }));
+};
+
+const { ride } = Astro.props;
+const { Content } = await render(ride);
+---
+
+<RidePost ride={ride}>
+  <Content />
+</RidePost>
