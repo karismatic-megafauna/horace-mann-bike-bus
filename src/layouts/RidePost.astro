@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Gallery from "../components/Gallery.astro";
+import { SITE_TITLE } from "../consts";
 
 type Props = {
   ride: CollectionEntry<"rides">;
@@ -13,7 +14,7 @@ const { ride } = Astro.props;
 const { data } = ride;
 ---
 
-<Layout title={data.title} description={data.notes ?? `Photos from ${data.title}.`}>
+<Layout title={`${data.title} — ${SITE_TITLE}`} description={data.notes ?? `Photos from ${data.title}.`}>
   <article class="max-w-3xl mx-auto px-4 py-8">
     <a href="/rides" class="text-sm text-secondary hover:text-primary">← Back to all rides</a>
 
