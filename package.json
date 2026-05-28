@@ -1,0 +1,30 @@
+{
+  "name": "horace-mann-bike-bus",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "seed:images": "node scripts/seed-images.mjs"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.7",
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/sitemap": "^3.5.1",
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^5.13.5",
+    "astro-icon": "^1.1.5",
+    "daisyui": "^5.0.43",
+    "sharp": "^0.34.2",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@iconify-json/mdi": "^1.2.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.19.1"
+  }
+}

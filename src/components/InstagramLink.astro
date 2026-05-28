@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "../consts";
+
+type Props = {
+  variant?: "icon" | "inline" | "cta";
+  class?: string;
+};
+
+const { variant = "icon", class: className = "" } = Astro.props;
+---
+
+{variant === "icon" && (
+  <a
+    href={INSTAGRAM_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Instagram: @${INSTAGRAM_HANDLE}`}
+    class={`inline-flex items-center text-primary hover:text-accent ${className}`}
+  >
+    <Icon name="mdi:instagram" class="w-6 h-6" />
+  </a>
+)}
+
+{variant === "inline" && (
+  <a
+    href={INSTAGRAM_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`inline-flex items-center gap-1 text-primary hover:text-accent underline-offset-4 hover:underline ${className}`}
+  >
+    <Icon name="mdi:instagram" class="w-5 h-5" />
+    <span>@{INSTAGRAM_HANDLE}</span>
+  </a>
+)}
+
+{variant === "cta" && (
+  <a
+    href={INSTAGRAM_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`btn btn-primary gap-2 ${className}`}
+  >
+    <Icon name="mdi:instagram" class="w-5 h-5" />
+    Follow @{INSTAGRAM_HANDLE}
+  </a>
+)}

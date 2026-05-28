@@ -1,0 +1,42 @@
+---
+import { SITE_TITLE } from "../consts";
+import InstagramLink from "./InstagramLink.astro";
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/rides", label: "Rides" },
+  { href: "/about", label: "About" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+---
+
+<header class="border-b border-base-300 bg-base-100">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 group">
+      <span class="text-xl sm:text-2xl font-semibold text-primary group-hover:text-accent">
+        {SITE_TITLE}
+      </span>
+    </a>
+    <nav class="flex items-center gap-1 sm:gap-2">
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          aria-current={isActive(href) ? "page" : undefined}
+          class:list={[
+            "px-3 py-2 rounded-md text-sm sm:text-base hover:bg-base-200",
+            isActive(href) ? "text-primary font-medium" : "text-base-content",
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+      <InstagramLink variant="icon" class="ml-1 sm:ml-2" />
+    </nav>
+  </div>
+</header>

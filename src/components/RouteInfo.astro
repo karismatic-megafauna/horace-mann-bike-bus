@@ -1,0 +1,47 @@
+---
+import {
+  MEETING_DAY,
+  MEETING_PLACE,
+  MEETING_TIME,
+  ROUTE_MAP_EMBED_SRC,
+} from "../consts";
+
+type Props = {
+  showMap?: boolean;
+  heading?: string;
+};
+
+const { showMap = true, heading = "Where & when" } = Astro.props;
+---
+
+<section class="rounded-box border border-base-300 bg-base-100 overflow-hidden">
+  <div class="p-6">
+    <h3 class="text-xl font-semibold text-primary">{heading}</h3>
+    <dl class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-base-content">
+      <div>
+        <dt class="text-xs uppercase tracking-wide text-secondary">Day</dt>
+        <dd class="mt-1 font-medium">{MEETING_DAY}</dd>
+      </div>
+      <div>
+        <dt class="text-xs uppercase tracking-wide text-secondary">Time</dt>
+        <dd class="mt-1 font-medium">{MEETING_TIME}</dd>
+      </div>
+      <div>
+        <dt class="text-xs uppercase tracking-wide text-secondary">Meeting place</dt>
+        <dd class="mt-1 font-medium">{MEETING_PLACE}</dd>
+      </div>
+    </dl>
+  </div>
+  {showMap && (
+    <div class="aspect-[16/9] w-full bg-base-200">
+      <iframe
+        src={ROUTE_MAP_EMBED_SRC}
+        title="Bike bus route map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="w-full h-full border-0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  )}
+</section>
