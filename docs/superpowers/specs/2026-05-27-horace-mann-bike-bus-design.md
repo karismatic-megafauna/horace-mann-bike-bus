@@ -140,23 +140,27 @@ A longer page, structured for someone discovering the bike bus for the first tim
    - To build a small piece of community — neighbors who know each other by name.
 
 3. **How we keep it safe**
-   - Adult ride leader at the front, sweep at the back.
-   - We ride single file or two-by-two depending on the street.
-   - Helmets required for kids, encouraged for adults.
-   - We stop together, we wait together, we cross together.
-   - Younger kids ride next to a parent or in a cargo bike.
+   - **Our size is our safety.** A big, visible group of riders is the single biggest reason cars slow down and give us room.
+   - **A lot of parents.** Many adults ride alongside the kids every week.
+   - **Sometimes a police escort.** Often, but not always — when we have one, it helps at bigger intersections.
+   - **We stop for traffic.** At major intersections and whenever cars are coming, we stop and wait.
+   - **Helmets required for kids.** Encouraged for adults.
+   - **Little kids ride with a parent** — alongside, on a trail-a-bike, or in a cargo bike.
 
-4. **The Route** — written description + embedded Google Map iframe (placeholder src, easy to swap).
-5. **Meeting Time & Place** — day(s) of week, time, address (placeholder values for user to edit).
-6. **FAQ** — at least the following questions, each with a short, parent-friendly answer:
+4. **What the kids are practicing**
+   This is a learning ride. The biggest thing the kids practice each week is the most important skill for riding on the street: *staying on the right side of the road, going with traffic instead of against it.* It takes repetition to make that automatic — which is the whole point of doing it weekly with a group.
+
+5. **The Route** — written description + embedded Google Map iframe (placeholder src, easy to swap).
+6. **Meeting Time & Place** — day(s) of week, time, address (placeholder values for user to edit).
+7. **FAQ** — at least the following questions, each with a short, parent-friendly answer:
    - *What if my kid can't ride very well yet?* — That's exactly who this is for. Come ride with us. We go slow. Parents ride alongside their kids. Cargo bikes and trail-a-bikes welcome.
    - *What if it rains?* — We post on Instagram the morning of if we're cancelling.
    - *Do we need to RSVP?* — No. Just show up at any point on the route.
    - *What kind of bike does my kid need?* — Anything that rolls and has working brakes. Scooters welcome too.
    - *Is there a cost?* — No. It's free. It's neighbors.
    - *Can I join if my kid doesn't go to Horace Mann?* — Yes.
-   - *How can I help?* — DM us on Instagram. We always need more adult ride marshals.
-7. **Contact** — "DM us on Instagram [@horace_mann_bike_bus](https://instagram.com/horace_mann_bike_bus)". No email.
+   - *How can I help?* — DM us on Instagram. The more parents on a ride, the safer it is.
+8. **Contact** — "DM us on Instagram [@horace_mann_bike_bus](https://instagram.com/horace_mann_bike_bus)". No email.
 
 ## Components
 
