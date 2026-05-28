@@ -11,7 +11,6 @@
     "seed:images": "node scripts/seed-images.mjs"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.7",
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/sitemap": "^3.5.1",
     "@tailwindcss/vite": "^4.1.8",

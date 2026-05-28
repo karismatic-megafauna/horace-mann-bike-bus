@@ -1,6 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "horace-mann-bike-bus",
-  "compatibility_date": "2025-01-01",
-  "pages_build_output_dir": "./dist"
+  "compatibility_date": "2026-05-23",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
 }

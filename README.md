@@ -37,7 +37,7 @@ Open http://localhost:4321.
 
 ## Deploy
 
-This project uses the Cloudflare Pages adapter. After connecting the repo in Cloudflare, the build command is `npm run build` and the output directory is `dist`.
+This project deploys to Cloudflare as a static site via Workers + Assets. The build command is `npm run build` (outputs to `dist/`); `wrangler.jsonc` points Cloudflare at that directory.
 
 ## Spec & plan
 
