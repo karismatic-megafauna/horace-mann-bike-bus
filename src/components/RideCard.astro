@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  ride: CollectionEntry<"rides">;
+};
+
+const { ride } = Astro.props;
+const { data, id } = ride;
+const slug = id.replace(/\.mdx?$/, "");
+---
+
+<a
+  href={`/rides/${slug}`}
+  class="group block rounded-box overflow-hidden bg-base-100 border border-base-300 hover:border-primary transition"
+>
+  <div class="aspect-[4/3] overflow-hidden bg-base-200">
+    <Image
+      src={data.coverImage}
+      alt={`Cover photo from ${data.title}`}
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 768px) 33vw, 100vw"
+      class="w-full h-full object-cover group-hover:scale-[1.02] transition"
+    />
+  </div>
+  <div class="p-4">
+    <h3 class="text-lg font-semibold text-primary group-hover:text-accent">{data.title}</h3>
+    <p class="text-sm text-secondary mt-1">
+      <FormattedDate date={data.date} />
+      {data.riders !== undefined && (
+        <span> · {data.riders} {data.riders === 1 ? "rider" : "riders"}</span>
+      )}
+    </p>
+  </div>
+</a>
