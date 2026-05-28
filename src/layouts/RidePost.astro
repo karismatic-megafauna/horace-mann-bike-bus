@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Gallery from "../components/Gallery.astro";
+
+type Props = {
+  ride: CollectionEntry<"rides">;
+};
+
+const { ride } = Astro.props;
+const { data } = ride;
+---
+
+<Layout title={data.title} description={data.notes ?? `Photos from ${data.title}.`}>
+  <article class="max-w-3xl mx-auto px-4 py-8">
+    <a href="/rides" class="text-sm text-secondary hover:text-primary">← Back to all rides</a>
+
+    <header class="mt-4">
+      <h1 class="text-3xl sm:text-4xl font-semibold text-primary">{data.title}</h1>
+      <p class="mt-2 text-secondary">
+        <FormattedDate date={data.date} />
+        {data.riders !== undefined && (
+          <span> · {data.riders} {data.riders === 1 ? "rider" : "riders"}</span>
+        )}
+      </p>
+    </header>
+
+    <div class="mt-6 rounded-box overflow-hidden bg-base-200">
+      <Image
+        src={data.coverImage}
+        alt={`Cover photo from ${data.title}`}
+        widths={[600, 1000, 1600]}
+        sizes="(min-width: 1024px) 768px, 100vw"
+        class="w-full object-cover"
+      />
+    </div>
+
+    {data.notes && (
+      <p class="mt-6 text-lg text-base-content">{data.notes}</p>
+    )}
+
+    <div class="mt-6 text-base-content leading-relaxed space-y-4">
+      <slot />
+    </div>
+
+    {data.gallery.length > 0 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold text-primary">More from this ride</h2>
+        <div class="mt-4">
+          <Gallery images={data.gallery} alt={data.title} />
+        </div>
+      </section>
+    )}
+
+    <div class="mt-10 pt-6 border-t border-base-300">
+      <a href="/rides" class="text-primary hover:text-accent">← Back to all rides</a>
+    </div>
+  </article>
+</Layout>
